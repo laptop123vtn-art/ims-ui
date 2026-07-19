@@ -30,5 +30,14 @@ export class StudentList {
     });
   }
 
-  deleteStudent(id: number): void {}
+  deleteStudent(id: number): void {
+    this.studentService.delete(id).subscribe({
+      next: (students) => {
+        this.notificationService.success(`دانشجو با موفقیت حذف شد`);
+      },
+      error: () => {
+        this.notificationService.error('خطا در بارگذاری لیست دانشجویان');
+      },
+    });
+  }
 }
