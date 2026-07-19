@@ -1,0 +1,25 @@
+<div>
+  <h2>دوره جدید</h2>
+
+  <div class="mb-3 mt-3">
+    <label>عنوان:</label>
+    <input type="text" [(ngModel)]="title" maxlength="50">
+  </div>
+
+  <div class="mb-3">
+    <label>تاریخ شروع:</label>
+    <input type="date" [(ngModel)]="startDate">
+  </div>
+
+  <div class="mb-3">
+    <label>تاریخ و زمان پایان:</label>
+    <input type="datetime-local" [(ngModel)]="endDateTime">
+  </div>
+
+  <div class="mb-3">
+    <label>ظرفیت دانشجو:</label>
+    <input type="number" [(ngModel)]="studentCapacity" min="1" max="32767">
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)="save()">ذخیره</button>
+</div>

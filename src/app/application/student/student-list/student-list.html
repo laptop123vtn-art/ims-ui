@@ -1,0 +1,45 @@
+
+@if (notificationService.message(); as message) {
+  <div
+    class="alert"
+    [class.alert-success]="notificationService.type() === 'success'"
+    [class.alert-danger]="notificationService.type() === 'error'"
+    [class.alert-info]="notificationService.type() === 'info'"
+    role="alert"
+  >
+    {{ message }}
+  </div>
+}
+
+<hr>
+<h2>لیست دانشجویان</h2>
+
+<input
+  type="text"
+  [ngModel]="filterText()"
+  (ngModelChange)="filterText.set($event)"
+>
+<hr>
+<table>
+  <tr>
+    <th>شناسه</th>
+    <th>نام</th>
+    <th>نام خانوادگی</th>
+     <th> عملیات</th>
+  </tr >
+  @for (item of dataSource(); track item.id) {
+    <tr>
+      <td>{{ item.id }}</td>
+      <td>{{ item.firstName }}</td>
+      <td>{{ item.lastName }}</td>
+
+      <td>
+        <button class="btn btn-danger" (click)="deleteStudent(item.id)">حذف</button>
+      </td>
+    </tr>
+  }
+</table>
+<hr>
+
+<button type="button" class="btn btn-primary" (click)="getStudents()"> نمایش دانشجوها
+</button>
