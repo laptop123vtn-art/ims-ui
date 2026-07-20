@@ -12,6 +12,7 @@ import { StudentService } from '../services/student.service';
   styleUrl: './student-list.css',
 })
 export class StudentList {
+  
   private readonly studentService = inject(StudentService);
   protected readonly notificationService = inject(NotificationService);
 
