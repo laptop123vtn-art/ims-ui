@@ -12,6 +12,7 @@ import { StudentService } from '../services/student.service';
   styleUrl: './student-list.css',
 })
 export class StudentList {
+  
   private readonly studentService = inject(StudentService);
   protected readonly notificationService = inject(NotificationService);
 
@@ -30,5 +31,14 @@ export class StudentList {
     });
   }
 
-  deleteStudent(id: number): void {}
+  deleteStudent(id: number): void {
+    this.studentService.delete(id).subscribe({
+      next: (students) => {
+        this.notificationService.success(`دانشجو با موفقیت حذف شد`);
+      },
+      error: () => {
+        this.notificationService.error('خطا در بارگذاری لیست دانشجویان');
+      },
+    });
+  }
 }
